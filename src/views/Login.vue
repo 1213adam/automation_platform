@@ -18,11 +18,12 @@
             v-model="form.psw"
             placeholder="please input password"
             show-password
+            @keyup.enter="submit"
           ></el-input
         ></el-form-item>
 
         <el-form-item>
-          <el-button @click="submit" type="primary">提交</el-button>
+          <el-button @click="submit"  type="primary">提交</el-button>
           <el-button @click="reset">重置</el-button></el-form-item
         >
       </el-form>
@@ -33,6 +34,7 @@
 <script>
 import { ref,reactive } from "vue";
 import Background from '@/components/Background.vue'
+import {login} from "../httplib"
 
 export default ({
   components:{
@@ -67,6 +69,7 @@ export default ({
 
     function submit() {
       console.log("click me submit");
+      login(form.account,form.psw)
     }
     function reset() {
       console.log("click me reset");

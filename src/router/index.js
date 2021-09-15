@@ -40,4 +40,20 @@ const router = createRouter({
   routes
 })
 
+router.beforeEach((to,from,next)=>{ //回调接收to,from, next
+  // console.log('to',to);             // 即将访问的路由
+  // console.log('from',from);           // 即将离开的路由
+  //可以控制要访问的路由
+  if(to.name!=='login' && localStorage.getItem('islogin')!=='yes'){  //如果不访问login页面,且没有登录，就重定向到login
+    console.log('未登录')
+    next('/login')
+  }else{
+    if(to.name!='login'){
+      console.log('已登录')
+    }else{
+      console.log('未登录')
+    }                //直接放行
+    next()
+  }
+})
 export default router
