@@ -12,22 +12,37 @@ const routes = [
     {
         path: '/',
         name: 'Home',
+        meta:{
+            title:'首页',
+        },
         component: Home,
         children: [{
             path: 'cases',
-            name: 'Cases',
+            meta:{
+                title:"测试用例",
+                icon: "el-icon-s-cooperation",
+            },
             component: Cases
         },{
             path: 'plans',
-            name: 'Plans',
+            meta:{
+                title:"测试计划",
+                icon: "el-icon-s-ticket",
+            },
             component: Plans
         },{
             path: 'requests',
-            name: 'Requests',
+            meta:{
+                title:"Driver接口",
+                icon: "el-icon-s-flag",
+            },
             component: Requests
         },{
             path: 'reports',
-            name: 'Reports',
+            meta:{
+                title:"测试报告",
+                icon: "el-icon-s-data",
+            },
             component: Reports
         },]
     },
@@ -69,10 +84,10 @@ router.beforeEach((to, from, next) => { //回调接收to,from, next
     //可以控制要访问的路由
     if (to.name !== 'login' && localStorage.getItem('islogin') == 'yes') {  //如果不访问login页面,且没有登录，就重定向到login
         console.log('未登录')
-        next()
+         next()
 
     } else {
-        next('/login')
+        next()
     }
 
 

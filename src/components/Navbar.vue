@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="logo">
-            <i class="el-icon-s-platform"></i>
+            <i class="el-icon-s-platform" ></i>
 
-            测试平台开发
+            <span style="color:white">测试平台开发 </span>
         </div>
         <el-menu
                 :default-active="activeIndex2"
@@ -35,7 +35,7 @@
                     <template #dropdown>
                         <el-dropdown-menu>
                             <el-dropdown-item icon="el-icon-setting">设置</el-dropdown-item>
-                            <el-dropdown-item icon="el-icon-turn-off" divided>退出</el-dropdown-item>
+                            <el-dropdown-item icon="el-icon-turn-off" divided @click="quit">退出</el-dropdown-item>
                         </el-dropdown-menu>
                     </template>
                 </el-dropdown>
@@ -45,25 +45,34 @@
 </template>
 
 <script>
+ 
+import {logout} from '../httplib'
     export default {
         setup() {
+            function quit() {
+                
+                logout()
+            }
             return {
                 circleUrl:
                     "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
+                    quit
             };
         },
     };
 </script>
 
-<style>
+<style scoped>
     .logo {
         width: 200px;
-        background-color: rgb(255, 208, 75);
+        background-color: rgba(48,60,84);
         float: left;
+        
     }
 
     .avatar {
         float: right;
         text-align: center;
     }
+  
 </style>

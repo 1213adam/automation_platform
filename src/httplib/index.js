@@ -39,6 +39,8 @@ function logout() {
     }
     axios(config).then(()=>{
         ElMessage.success("退出登录")
+        router.push('/login')
+        localStorage.setItem('islogin','no')
     }).catch(()=>{
         ElMessage.error("退出失败")
     })

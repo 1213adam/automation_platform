@@ -1,12 +1,16 @@
 <template>
     <div>
-        <h1>this is plans</h1>
+        <main-layout> </main-layout>
     </div>
 </template>
 
 <script>
+import MainLayout from '../components/common/MainLayout.vue'
     export default {
-        name: "Plans"
+        name: "Plans",
+        components:{
+            MainLayout
+        },
     }
 </script>
 
